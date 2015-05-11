@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Demonstrating Bootstrap Validation</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- local css -->
+  
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <link href="validation.css" rel="stylesheet">
+</head>
+
+<body class="container">
+<h2>Bootstrap-Validate</h2>
+    
+<form class="form">
+  <div class="form-group form-inline">
+      <div class="errortext"></div>
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="text" class="form-control validate required email" id="exampleInputEmail1" placeholder="Email Address">
+      <p class="help-block hidden">Email address should contain someName@SomeDomain.xx</p>
+  </div>
+    
+      <div class="form-group">
+      <div class="errortext"></div>
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control validate required length" data-length="5" id="exampleInputPassword1" placeholder="Password">
+      <p class="help-block hidden">Your password will be valid if over 5 characters</p>
+  </div>
+    
+<div class="form-group">
+    <div class="errortext"></div>
+    <label for="exampleInputNumber">Your Age In Years</label>
+    <input type="text" class="form-control validate required number" id="exampleInputNumber" placeholder="Age">
+    <p class="help-block hidden">What is your age?</p>
+</div>
+    
+    
+<div class="form-group">
+    <div class="errortext"></div>
+    <label for="exampleRange">Character Range</label>
+    <input type="password"  class="form-control validate required range" id="exampleRange" placeholder="Password Range" data-lengthmin="5" data-lengthmax="10">
+    <p class="help-block hidden">Your password will be valid if between 5 - 10 characters</p>
+</div>
+
+  <div class="checkbox">
+      <div class="errortext"></div>
+    <label>
+      <input type="checkbox"> Check me out
+    </label>
+  </div>
+    
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+</body>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+    <!-- bootstrap-validate.js is required -->
+<script src="scripts/bootstrap-validate.js"></script>
+
+<!-- this activates the validator -->
+<script src="scripts/jquery-validate.js"></script>
+    
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+       $('form').on('change', function(e){
+            validate();
+       });       
+        
+        $('form').on('submit',function(){
+        return validate();
+        });
+        
+    });
+</script>
+</html>
