@@ -3,23 +3,28 @@ validate = function () {
 
     $(".validate").each(function (index, data) {
         // FIND THE PARENT FORM-GROUP AND REMOVE THE ERROR STYLE
-        $(data).closest('.form-group').removeClass('has-error');
+        $(data).closest('.form-group')
+            .removeClass('has-error')
+            .removeClass('has-success')
+            .addClass('has-warning')
+            .addClass("has-feedback");
         // CLEAR OUT THE LOCAL ERROR PLACEHOLDER
         $(data).siblings('.errortext').html('');
         // IN THE EVENT THE HELP-BLOCK IS HIDDEN, DISPLAY IT.
-        $(data).siblings('.help-block').removeClass('hidden');
+        $(data).siblings('.glyphicon.form-control-feedback').removeClass('glyphicon-ok').addClass('glyphicon-ok');
     });
 
     $(".validate.required").each(function (index, data) {
         if ($(data).val().trim() == "") {
             errorCount = errorCount + 1;
             // FIND THE PARENT FORM-GROUP AND ADD THE ERROR STYLE
-            $(data).closest('.form-group').addClass('has-error');
+            $(data).closest('.form-group').addClass('has-error').removeClass('has-success');
             // ENSURE THE HELP-BLOCK CONTENT IS DISPLAYED
             $(data).closest('.help-block').removeClass('hidden');
             var place = $(data).attr('placeholder');
             // FILL IN THE ERRORTEXT PLACEHOLDER WITH A NEW LABEL INDICATING WHAT'S NEEDED.
             $(data).siblings('.errortext').html('<label class="control-label" for="inputError">' + place + ' is required</label>');
+            $(data).siblins('.glyphicon.form-control-feedback').removeClass('glyphicon-ok').addClass('glyphicon-warning-sign');
 
 
         }
